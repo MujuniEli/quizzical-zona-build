@@ -1,0 +1,13 @@
+:root {
+  --bg: #f2f4f7;
+  --font: #293264;
+  --btn-bg: #4d5b9e;
+  --answer-wrong: #F8BCBC;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+
