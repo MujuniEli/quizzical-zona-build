@@ -1,12 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Karla:wght@300;500&display=swap');
+
 :root {
-  --bg: #f2f4f7;
+  --bg: #F5F7FB;
   --font: #293264;
-  --btn-bg: #4d5b9e;
+  --btn-bg: #4D5B9E;
   --answer-wrong: #F8BCBC;
+  --btn-font: #F5F7FB;
+  --answer-picked: #D6DBF5;
+  --answer-correct: #94D7A2;
+  --answer-disabled: #434954;
+  --answer-wrong: #F8BCBC;
+
 }
 
-* {
-  box-sizing: border-box;
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Karla', sans-serif;
+  color: var(--font);
+  background: var(--bg);
+}
+
+/* intro-page styles */
+
+.intro-container {
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.blob-yellow {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: -10;
+}
+
+.blob-blue {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: -10;
 }
 
 
