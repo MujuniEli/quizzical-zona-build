@@ -28,7 +28,7 @@ export default function App() {
         answers: [...incorrect_answer, correct_answer]
       }
     })))
-  })
+  }, [])
 
   function displayQuestions() {
     setGame(prevState => {

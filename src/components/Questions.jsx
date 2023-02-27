@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import shuffleArray from 'shuffle-array'
+import { decode } from 'html-entities'
 
 
 export default function Questions({ game, questions }) {
@@ -9,7 +11,9 @@ export default function Questions({ game, questions }) {
             id: question.id,
             question: question.question,
             correct_answer: question.correct_answer,
-
+            answers: shuffleArray(question.answers),
+            playerAnswer: "",
+            isCorrect: "no-data"
         }
     })
 
@@ -18,7 +22,7 @@ export default function Questions({ game, questions }) {
     const questionMarkUp = questionState.map((item) => {
         return (
                     <div key={item.id} id={item.id} className="container-question">
-                        <h2 className='question-title'>{item.number}.{item.question}</h2>
+                        <h2 className='question-title'>{item.number}.{decode(item.question)}</h2>
                     </div>
         )
     })
