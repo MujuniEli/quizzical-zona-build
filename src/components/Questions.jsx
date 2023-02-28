@@ -11,7 +11,7 @@ export default function Questions({ game, questions }) {
             id: question.id,
             question: question.question,
             correct_answer: question.correct_answer,
-            answers: shuffleArray(question.answers),
+            // answers: shuffleArray(question.answers),
             playerAnswer: "",
             isCorrect: "no-data"
         }
@@ -21,8 +21,10 @@ export default function Questions({ game, questions }) {
 
     const questionMarkUp = questionState.map((item) => {
         return (
-                    <div key={item.id} id={item.id} className="container-question">
-                        <h2 className='question-title'>{item.number}.{decode(item.question)}</h2>
+                    <div className='quiz-container'>
+                    <div key={item.id} id={item.id} className="question-container">
+                        <h2 className='question-title'>{decode(item.question)}</h2>
+                    </div>
                     </div>
         )
     })

@@ -25,7 +25,7 @@ export default function App() {
         id: nanoid(),
         question: question,
         correct_answer: correct_answer,
-        answers: [...incorrect_answer, correct_answer]
+        // answers: [...incorrect_answer, correct_answer]
       }
     })))
   }, [])
@@ -42,7 +42,7 @@ export default function App() {
   return (
     <div className="App">
       <img src={blobYello} alt="yellow blob" className='blob-yellow' />
-      <Intro />
+      {game.pageView === 'index' && <Intro displayQuestions={displayQuestions}/>}
       {game.pageView === 'questions' && <Questions game={game} questions={question} />}
       <img src={blobBlu} alt="blue blob" className='blob-blue' />
     </div>

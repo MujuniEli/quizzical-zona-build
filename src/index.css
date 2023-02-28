@@ -10,7 +10,7 @@
   --answer-correct: #94D7A2;
   --answer-disabled: #434954;
   --answer-wrong: #F8BCBC;
-
+  --question-border: #DBDEF0;
 }
 
 *,
@@ -71,5 +71,30 @@ body {
   z-index: -10;
 }
 
+/* Questions & Answer styles  */
+
+.quiz-container {
+      width: 90%;
+      max-width: 900px;
+      max-height: 100%;
+      margin: 5px auto;
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+      /* border: 2px solid var(--question-border);
+      border-radius: 8px; */
+}
+
+.question-container {
+  border-bottom: 2px solid var(--question-border);
+  padding: 50px 0;
+}
+
+.question-title {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  margin-top: 0;
+  line-height: 1.5;
+}
 
 
