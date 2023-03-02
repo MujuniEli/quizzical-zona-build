@@ -25,7 +25,7 @@ export default function App() {
         id: nanoid(),
         question: question,
         correct_answer: correct_answer,
-        // answers: [...incorrect_answer, correct_answer]
+        answers: [...incorrect_answer, correct_answer]
       }
     })))
   }, [])
@@ -39,11 +39,45 @@ export default function App() {
     })
   }
 
+  function endGame() {
+      setGame(prevState => {
+        return {
+            ...prevState,
+            isOver: true
+        }
+      })
+  }
+
+  function countPoints() {
+      setGame(prevState => {
+        return {
+            ...prevState,
+            points: prevState.points + 1
+        }
+      })
+  }
+
+  function clearState() {
+    setGame(prevState => prevState = {
+      pageView: 'index',
+      isOver: false,
+      points: 0
+    })
+    setQuestion([])
+  }
+
   return (
     <div className="App">
       <img src={blobYello} alt="yellow blob" className='blob-yellow' />
       {game.pageView === 'index' && <Intro displayQuestions={displayQuestions}/>}
-      {game.pageView === 'questions' && <Questions game={game} questions={question} />}
+      {game.pageView === 'questions' && 
+      <Questions 
+        game={game} 
+        questions={question} 
+        countPoints={countPoints} 
+        endGame={endGame} 
+        clearState={clearState}
+      />}
       <img src={blobBlu} alt="blue blob" className='blob-blue' />
     </div>
   )

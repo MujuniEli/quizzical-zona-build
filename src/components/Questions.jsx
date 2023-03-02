@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import shuffleArray from 'shuffle-array'
 import { decode } from 'html-entities'
+import Answers from './Answers'
 
 
-export default function Questions({ game, questions }) {
+export default function Questions({ game, questions, endGame, countPoints, clearState }) {
 
     const data = questions.map((question) => {
         return {
@@ -11,7 +12,7 @@ export default function Questions({ game, questions }) {
             id: question.id,
             question: question.question,
             correct_answer: question.correct_answer,
-            // answers: shuffleArray(question.answers),
+            answers: shuffleArray(question.answers),
             playerAnswer: "",
             isCorrect: "no-data"
         }
@@ -24,10 +25,22 @@ export default function Questions({ game, questions }) {
                     <div className='quiz-container'>
                     <div key={item.id} id={item.id} className="question-container">
                         <h2 className='question-title'>{decode(item.question)}</h2>
+                        <Answers />
                     </div>
                     </div>
         )
     })
+
+    function savePickedAnswers(idQuestion, answer) {
+            setQuestionState(questions => {
+                return questions.map(question => {
+                    return question.id === idQuestion ? {
+                        ...question,
+                        playerAnswer: answer
+                    } : question 
+                })
+            })
+    }
 
     return (
         <div className="quiz-container">
