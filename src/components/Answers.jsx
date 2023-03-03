@@ -33,38 +33,32 @@ export default function Answers({ all_answers, questionId, savePickedAnswer, isG
     }
 
     function addAnswerStyle(item) {
-        switch(item) {
-           case  (isGameOver && item.isPicked && isCorrect):
-           return {
-                    background: "var(--answer-correct)",
-                    border: "2px solid var(--answer-correct)"
-           }
-           break;
-           case (isGameOver && item.isPicked && !isCorrect):
+        if (isGameOver && item.isPicked && isCorrect) {
             return {
-                background: "var(--answer-wrong)",
-                border: "2px solid var(--answer-wrong)"
+              background: "var(--answer-correct)",
+              border: "2px solid var(--answer-correct)"
             }
-            break;
-            case (item.isPicked && !isGameOver):
+          } else if (isGameOver && item.isPicked && !isCorrect) {
             return {
-                background: "var(--answer-picked)",
-                border: "2px solid var(--answer-picked)"
-            }  
-            break;
-            case (isGameOver && item.answer === correct_answer):
+              background: "var(--answer-wrong)",
+              border: "2px solid var(--answer-wrong)"
+            }
+          } else if (item.isPicked && !isGameOver) {
             return {
-                background: "var(--answer-picked)",
-                border: "2px solid var(--answer-picked)"
-            }   
-            break; 
-            default: (!item.isPicked && !isGameOver)
+              background: "var(--answer-picked)",
+              border: "2px solid var(--answer-picked)"
+            }
+          } else if (isGameOver && item.answer === correct_answer) {
             return {
-                background: "",
-                border: ""
-            } 
-            break; 
-        }
+              background: "var(--answer-picked)",
+              border: "2px solid var(--answer-picked)"
+            }
+          } else if (!item.isPicked && !isGameOver) {
+            return {
+              background: "",
+              border: ""
+            }
+          }
     }
 
     const answerHtml = answerState.map(item => {
@@ -72,6 +66,7 @@ export default function Answers({ all_answers, questionId, savePickedAnswer, isG
                     <button
                         id={item.id}
                         key={item.id}
+                        style={addAnswerStyle(item)}
                         className="answer-btn"
                         onClick={() => toggle(item.id, questionId, item.answer)}
                         disabled ={isGameOver ? true : false}

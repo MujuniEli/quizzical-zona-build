@@ -25,7 +25,7 @@ export default function App() {
         id: nanoid(),
         question: question,
         correct_answer: correct_answer,
-        answers: [...incorrect_answer, correct_answer]
+        answers: Array.isArray(incorrect_answer) ? [...incorrect_answer, correct_answer] : [incorrect_answer, correct_answer]
       }
     })))
   }, [])
