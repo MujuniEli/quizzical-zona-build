@@ -25,7 +25,14 @@ export default function Questions({ game, questions, endGame, countPoints, clear
                     <div className='quiz-container'>
                     <div key={item.id} id={item.id} className="question-container">
                         <h2 className='question-title'>{decode(item.question)}</h2>
-                        <Answers />
+                        <Answers 
+                            isGameOver={game.isOver}
+                            questionId={item.id}
+                            all_answers={item.answers}
+                            correct_answer={item.correct_answer}
+                            savePickedAnswer={savePickedAnswers}
+                            isCorrect={item.isCorrect}
+                        />
                     </div>
                     </div>
         )
@@ -42,9 +49,23 @@ export default function Questions({ game, questions, endGame, countPoints, clear
             })
     }
 
+    function checkAnswers() {
+        endGame()
+        questionState.map(question => {
+            if(question.correct_answer === question.playerAnswer) {
+                countPoints()
+                question.isCorrect = true
+            }else {
+                question.isCorrect = false
+            }
+        })
+    }
+
     return (
         <div className="quiz-container">
             {questionMarkUp}
+            {game.isOver ? <p className='points'>Correct answers: {game.points} / 5</p> : ""}
+            <button className='check-btn' onClick={game.isOver ? clearState : checkAnswers}>{game.isOver ? "New Game" : "check answers"}</button>
         </div>
     )
 }

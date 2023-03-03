@@ -97,4 +97,11 @@ body {
   line-height: 1.5;
 }
 
+.answer-btn {
+    font-family: 'inter', sans-serif;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    
+}
+
 
