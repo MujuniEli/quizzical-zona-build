@@ -97,11 +97,35 @@ body {
   line-height: 1.5;
 }
 
+.player-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.points {
+  padding-right: 1.5em;
+}
+
 .answer-btn {
     font-family: 'inter', sans-serif;
     border-radius: 15px;
     font-size: 1.1rem;
     
+}
+
+.check-btn {
+      border: none;
+      color: var(--btn-font);
+      background: var(--btn-bg);
+      font-family: 'inter', sans-serif;
+      font-size: 10.24px;
+      line-height: 12px;
+      width: 104px;
+      height: 35px;
+      border-radius: 15px;
+      cursor: pointer;
+      max-width: 120px;
 }
 
 

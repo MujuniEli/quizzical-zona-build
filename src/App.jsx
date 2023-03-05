@@ -67,7 +67,7 @@ export default function App() {
   }
 
   return (
-    <div className="App">
+    <div>
       <img src={blobYello} alt="yellow blob" className='blob-yellow' />
       {game.pageView === 'index' && <Intro displayQuestions={displayQuestions}/>}
       {game.pageView === 'questions' && 

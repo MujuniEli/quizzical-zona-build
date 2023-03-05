@@ -43,7 +43,7 @@ export default function Questions({ game, questions, endGame, countPoints, clear
                 return questions.map(question => {
                     return question.id === idQuestion ? {
                         ...question,
-                        playerAnswer: answer
+                        playerAnswer: answer,
                     } : question 
                 })
             })
@@ -64,8 +64,10 @@ export default function Questions({ game, questions, endGame, countPoints, clear
     return (
         <div className="quiz-container">
             {questionMarkUp}
-            {game.isOver ? <p className='points'>Correct answers: {game.points} / 5</p> : ""}
-            <button className='check-btn' onClick={game.isOver ? clearState : checkAnswers}>{game.isOver ? "New Game" : "check answers"}</button>
+            <div className="player-stats">
+            {game.isOver ? <p className='points'>You Scored {game.points}/5 correct answers</p> : ""}
+            <button className='check-btn' onClick={game.isOver ? clearState : checkAnswers}>{game.isOver ? "Play again" : "Check answers"}</button>
+            </div>
         </div>
     )
 }
