@@ -10,7 +10,7 @@ import Questions from './components/Questions'
 
 export default function App() {
   
-  const [question, setQuestion] = useState([])
+  const [questions, setQuestions] = useState([])
 
   const [game, setGame] = useState({pageView: 'index', isOver: false, points: 0})
 
@@ -19,13 +19,13 @@ export default function App() {
   useEffect(() => {
     fetch(API_URL)
     .then(response => response.json())
-    .then(data => setQuestion(data.results.map(item => {
-      const { question, correct_answer, incorrect_answer } = item
+    .then(data => setQuestions(data.results.map(item => {
+      const { question, correct_answer, incorrect_answers } = item
       return {
         id: nanoid(),
         question: question,
         correct_answer: correct_answer,
-        answers: Array.isArray(incorrect_answer) ? [...incorrect_answer, correct_answer] : [incorrect_answer, correct_answer]
+        answers: [...incorrect_answers, correct_answer]
       }
     })))
   }, [])
@@ -73,7 +73,7 @@ export default function App() {
       {game.pageView === 'questions' && 
       <Questions 
         game={game} 
-        questions={question} 
+        questions={questions} 
         countPoints={countPoints} 
         endGame={endGame} 
         clearState={clearState}

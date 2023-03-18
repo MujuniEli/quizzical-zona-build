@@ -22,8 +22,8 @@ export default function Questions({ game, questions, endGame, countPoints, clear
 
     const questionMarkUp = questionState.map((item) => {
         return (
-                    <div className='quiz-container'>
-                    <div key={item.id} id={item.id} className="question-container">
+                    <div key={item.number} className='quiz-container'>
+                    <div id={item.id} className="question-container">
                         <h2 className='question-title'>{decode(item.question)}</h2>
                         <Answers 
                             isGameOver={game.isOver}
